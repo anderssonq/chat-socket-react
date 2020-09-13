@@ -13,23 +13,21 @@ const Message = ({ message: { text, user, privateTo }, name }) => {
     isSentByCurrentUser = true;
   }
 
-  console.log(privateTo, name);
-
   return isSentByCurrentUser ? (
     <div className="messageContainer justifyEnd">
-      <p className="sentText pr-10">{trimmedName}</p>
+      <p className="sentText pr-10">{trimmedName} { privateTo ? `to ${privateTo}` : null}</p>
       <div className="messageBox backgroundBlue">
-        <p className="messageText colorWhite">{ReactEmoji.emojify(text)}</p>
+        <p className="messageText colorWhite">{ReactEmoji.emojify(text)} </p>
       </div>
     </div>
-  ) : privateTo === name ? (
+  ) : privateTo ? privateTo === name ? (
     <div className="messageContainer justifyStart">
       <div className="messageBox backgroundPrivate">
         <p className="messageText colorDark">{ReactEmoji.emojify(text)}</p>
       </div>
       <p className="sentText pl-10 ">{user} - Private message</p>
     </div>
-  ) : (
+  ) : null : (
     <div className="messageContainer justifyStart">
       <div className="messageBox backgroundLight">
         <p className="messageText colorDark">{ReactEmoji.emojify(text)}</p>

@@ -35,7 +35,7 @@ const TextContainer = ({ user, users, location }) => {
                   <div key={userl.name} className="activeItem">
                     <Link to={`/chat${search}&privateTo=${userl.name}`}>
                       {userl.name}{' '}
-                      {privateTo
+                      {privateTo === userl.name
                         ? ' - Next message will be private to him/her'
                         : null}
                       <img alt="Online Icon" src={onlineIcon} />
